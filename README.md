@@ -1,5 +1,3 @@
-<!-- CASCADE_DEBUG_FORCE_CHANGE -->
-
 # Auto Test for AI Chatbot (Hyperjump)
 
 ## Project Description
