@@ -1,88 +1,88 @@
 # Auto Test for AI Chatbot (Hyperjump)
 
-## Deskripsi Proyek
+## Project Description
 
-Proyek ini berisi skrip otomatisasi untuk melakukan pengujian fungsional pada chatbot AI Hyperjump. Skrip menggunakan Node.js dan Puppeteer untuk berinteraksi dengan antarmuka web chatbot, mengirimkan serangkaian pertanyaan input yang didefinisikan dalam file Excel, menangkap respons bot, dan membandingkannya dengan contoh jawaban yang diharapkan.
+This project contains an automation script for functional testing of the Hyperjump AI chatbot. The script uses Node.js and Puppeteer to interact with the chatbot's web interface, send a series of input questions defined in an Excel file, capture the bot's responses, and compare them against expected sample answers.
 
-Tujuan utama adalah untuk memastikan chatbot merespons secara akurat dan konsisten terhadap berbagai skenario pengujian.
+The main goal is to ensure the chatbot responds accurately and consistently to various test scenarios.
 
-## Fitur Utama
+## Key Features
 
-*   Membaca kasus uji dari file `test-cases.xlsx`.
-    *   Pertanyaan input diambil dari Kolom E.
-    *   Contoh jawaban yang diharapkan (untuk referensi) diambil dari Kolom G.
-*   Menggunakan Puppeteer untuk mengotomatiskan interaksi browser dengan chatbot.
-*   Menvalidasi respons bot terhadap contoh jawaban (saat ini menggunakan logika `includes` secara case-insensitive).
-*   Menghasilkan laporan hasil pengujian dalam beberapa format:
-    *   Tabel ringkas di konsol.
-    *   File teks (`.txt`) detail.
-    *   File JSON (`.json`).
-    *   File Excel (`.xlsx`).
-*   Hasil pengujian disimpan dalam direktori `output/` dengan timestamp.
+*   Reads test cases from the `test-cases.xlsx` file.
+    *   Input questions are taken from Column E.
+    *   Expected sample answers (for reference) are taken from Column G.
+*   Uses Puppeteer to automate browser interaction with the chatbot.
+*   Validates bot responses against sample answers (currently using case-insensitive `includes` logic).
+*   Generates test result reports in multiple formats:
+    *   Concise table in the console.
+    *   Detailed text file (`.txt`).
+    *   JSON file (`.json`).
+    *   Excel file (`.xlsx`).
+*   Test results are saved in the `output/` directory with a timestamp.
 
-## Prasyarat
+## Prerequisites
 
-Sebelum menjalankan skrip, pastikan Anda memiliki:
+Before running the script, ensure you have:
 
-*   [Node.js](https://nodejs.org/) (direkomendasikan versi LTS terbaru)
-*   npm (biasanya terinstal bersama Node.js)
-*   Browser Google Chrome atau Chromium (digunakan oleh Puppeteer)
+*   [Node.js](https://nodejs.org/) (latest LTS version recommended)
+*   npm (usually installed with Node.js)
+*   Google Chrome or Chromium browser (used by Puppeteer)
 
-## Instalasi
+## Installation
 
-1.  **Clone Repositori (jika belum):**
+1.  **Clone the Repository (if you haven't already):**
     ```bash
     git clone https://github.com/amripangestu/auto-test-for-ai-chatbot.git
     cd auto-test-for-ai-chatbot
     ```
 
-2.  **Instal Dependensi:**
-    Dari direktori root proyek, jalankan perintah berikut untuk menginstal semua paket yang dibutuhkan (seperti Puppeteer, xlsx, cli-table3):
+2.  **Install Dependencies:**
+    From the project root directory, run the following command to install all required packages (like Puppeteer, xlsx, cli-table3):
     ```bash
     npm install
     ```
 
-## Struktur File `test-cases.xlsx`
+## `test-cases.xlsx` File Structure
 
-File `test-cases.xlsx` adalah sumber utama untuk kasus uji Anda. Pastikan file ini memiliki struktur berikut pada sheet pertama:
+The `test-cases.xlsx` file is the primary source for your test cases. Ensure this file has the following structure on its first sheet:
 
-*   **Kolom E**: Berisi pertanyaan input yang akan dikirimkan ke chatbot.
-*   **Kolom G**: Berisi "Sample Expected Answer" atau contoh jawaban yang diharapkan dari chatbot sebagai referensi. *Catatan: Logika validasi saat ini memeriksa apakah respons bot mengandung teks dari kolom ini.*
+*   **Column E**: Contains the input questions to be sent to the chatbot.
+*   **Column G**: Contains the "Sample Expected Answer" from the chatbot for reference. *Note: The current validation logic checks if the bot's response includes the text from this column.*
 
-Baris kosong pada Kolom E akan diabaikan.
+Empty rows in Column E will be ignored.
 
-## Menjalankan Skrip Pengujian
+## Running the Test Script
 
-Untuk menjalankan skrip pengujian, navigasikan ke direktori root proyek di terminal Anda dan jalankan:
+To run the test script, navigate to the project root directory in your terminal and execute:
 
 ```bash
 node chatbot-test.js
 ```
 
-Skrip akan:
-1.  Membaca `test-cases.xlsx`.
-2.  Membuka browser dan berinteraksi dengan chatbot.
-3.  Menampilkan hasil di konsol secara real-time.
-4.  Menyimpan file laporan di direktori `output/`.
+The script will:
+1.  Read `test-cases.xlsx`.
+2.  Open a browser and interact with the chatbot.
+3.  Display results in the console in real-time.
+4.  Save report files in the `output/` directory.
 
-## Output Hasil Pengujian
+## Test Result Output
 
-Setelah eksekusi selesai, Anda akan menemukan file-file berikut di dalam direktori `output/` (dengan nama file yang menyertakan timestamp):
+After execution, you will find the following files in the `output/` directory (filenames include a timestamp):
 
-*   `test_results_YYYY-MM-DDTHH-MM-SS-MSZ.txt`: Laporan teks detail.
-*   `test_results_YYYY-MM-DDTHH-MM-SS-MSZ.json`: Laporan dalam format JSON.
-*   `test_results_YYYY-MM-DDTHH-MM-SS-MSZ.xlsx`: Laporan dalam format Excel.
+*   `test_results_YYYY-MM-DDTHH-MM-SS-MSZ.txt`: Detailed text report.
+*   `test_results_YYYY-MM-DDTHH-MM-SS-MSZ.json`: Report in JSON format.
+*   `test_results_YYYY-MM-DDTHH-MM-SS-MSZ.xlsx`: Report in Excel format.
 
-## Pengembangan Selanjutnya (Ide)
+## Future Development (Ideas)
 
-*   Implementasi perbandingan yang lebih canggih (misalnya, menggunakan pencocokan kata kunci dari kolom tambahan di Excel atau integrasi dengan AI untuk similarity checking).
-*   Menambahkan kemampuan untuk mengambil screenshot pada saat terjadi kegagalan.
-*   Integrasi dengan sistem CI/CD.
+*   Implement more advanced comparison logic (e.g., using keyword matching from an additional Excel column or AI integration for similarity checking).
+*   Add the ability to take screenshots on failure.
+*   Integrate with a CI/CD system.
 
-## Kontribusi
+## Contributing
 
-Jika Anda ingin berkontribusi, silakan fork repositori ini dan buat pull request. Untuk perubahan besar, silakan buka issue terlebih dahulu untuk mendiskusikan apa yang ingin Anda ubah.
+If you wish to contribute, please fork this repository and create a pull request. For major changes, please open an issue first to discuss what you would like to change.
 
 ---
 
-*README ini dibuat untuk proyek chatbot testing Hyperjump.*
+*This README was created for the Hyperjump chatbot testing project.*
