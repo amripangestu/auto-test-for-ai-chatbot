@@ -1,0 +1,15 @@
+# Dependencies
+node_modules/
+
+# Output files
+output/
+
+# Temporary Excel file created by Microsoft Excel when a file is open
+~$*.xlsx
+
+# Log files (if any)
+*.log
+
+# OS-specific files
+.DS_Store
+Thumbs.db
